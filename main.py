@@ -27,6 +27,7 @@ class Snowball(simpy.Process):
 env = simpy.Environment()
 
 # Create 5 instances of the Snowball algorithm, 2 with state A and 3 with state B
+# TODO: initiate the snowball instances with an array instead of calling the Snowball class
 snowball1 = Snowball(env, "A", [])
 snowball2 = Snowball(env, "A", []) 
 snowball3 = Snowball(env, "B", [])
