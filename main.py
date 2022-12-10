@@ -9,7 +9,7 @@ class Snowball(simpy.Process):
         self.state = state
         self.nodes = nodes
         print(state)
-        print(nodes)
+        print(nodes) #printing numbers(??)
     def run(self):
         # Poll 3 random nodes and check if the majority have the same state as this node
         while True:
