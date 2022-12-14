@@ -2,27 +2,28 @@ import simpy
 import random
 
 # Define the Snowball algorithm as a Process in simPy
-class Snowball(simpy.Process):
+class Snowball(object):
     def __init__(self, env, state, nodes):
         # Initialize the Process and store the environment instance, state, and nodes
-        super().__init__(env, generator=self.run())
+        self.env = env
         self.state = state
         self.nodes = nodes
         print(state)
-        print(nodes) #printing numbers(??)
+        print(nodes)
     def run(self):
-        # Poll 3 random nodes and check if the majority have the same state as this node
-        while True:
-            poll_nodes = random.sample(self.nodes, 3)
-            poll_states = [node.state for node in poll_nodes]
-            print(poll_states)
-            if poll_states.count(self.state) >= 2:
-                # Change the state of this node to the state of the majority of the polled nodes
-                self.state = max(set(poll_states), key=poll_states.count)
-            else:
-                # Keep the same state
-                pass
-            yield self.env.timeout(0)
+    # Poll 3 random nodes and check if the majority have the same state as this node
+     while True:
+        poll_nodes = random.sample(self.nodes, 3)
+        poll_states = [node.state for node in poll_nodes]
+        print(poll_states)
+        if poll_states.count(self.state) >= 2:
+            # Change the state of this node to the state of the majority of the polled nodes
+            self.state = max(set(poll_states), key=poll_states.count)
+        else:
+            # Keep the same state
+            pass
+        # Yield control to other processes
+        yield self.env.timeout(1)
 
 # Create an instance of the Environment class
 env = simpy.Environment()
