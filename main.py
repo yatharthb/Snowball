@@ -5,6 +5,7 @@ import random
 class Snowball(object):
     def __init__(self, env, state, nodes):
         # Initialize the Process and store the environment instance, state, and nodes
+        # some issue with Snowball class as a generator
         self.env = env
         self.state = state
         self.nodes = nodes
