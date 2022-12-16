@@ -23,7 +23,7 @@ class Snowball(object):
         else:
             # Keep the same state
             pass
-        # Yield control to other processes
+        # Yield control to other processes (might not be needed)
         yield self.env.timeout(1)
 
 # Create an instance of the Environment class
