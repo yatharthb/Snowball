@@ -50,7 +50,7 @@ env.process(snowball3)
 env.process(snowball4)
 env.process(snowball5)
 
-# Run the simulation until all the algorithms have the same state
+# Run the simulation until all the snowball instances have the same state
 while len(set([state[node] for node in ["snowball1", "snowball2", "snowball3", "snowball4", "snowball5"]])) > 1:
     env.step()
 
